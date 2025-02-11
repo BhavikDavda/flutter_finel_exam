@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../conroller/fav.dart';
 
-
 class FavoriteUsersPage extends StatelessWidget {
   final FavoriteController controller = Get.put(FavoriteController());
 
