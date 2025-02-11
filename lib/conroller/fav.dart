@@ -22,11 +22,11 @@ class FavoriteController extends GetxController {
 
   void addToFavorites(UserModel user) {
     firebaseService.addFavorite(user);
-    fetchFavorites(); // Refresh List
+    fetchFavorites();
   }
 
   void removeFromFavorites(int id) {
     firebaseService.removeFavorite(id);
-    fetchFavorites(); // Refresh List
+    fetchFavorites();
   }
 }

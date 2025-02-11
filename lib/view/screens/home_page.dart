@@ -22,13 +22,13 @@ class HomePage extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.logout),
             onPressed: () {
-              Get.offAll(() => LoginPage()); // Go to LoginPage on Logout
+              Get.offAll(() => LoginPage());
             },
           ),
           IconButton(
             icon: Icon(Icons.favorite, color: Colors.red),
             onPressed: () {
-              Get.to(() => FavouriteUsersPage()); // Navigate to Favorite Page
+              Get.to(() => FavouriteUsersPage());
             },
           ),
         ],
@@ -60,7 +60,7 @@ class HomePage extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () {
-          Get.to(() => SignUpPage()); // Navigate to SignUp Page
+          Get.to(() => SignUpPage());
         },
       ),
     );
