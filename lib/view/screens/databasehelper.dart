@@ -3,24 +3,23 @@ import 'package:path/path.dart';
 import '../../models/usermodel.dart';
 
 
-class DBHelper {
+class DatabaseHelper {
   static Database? _database;
 
   Future<Database> get database async {
     if (_database != null) return _database!;
-    _database = await _initDB();
+    _database = await initDB();
     return _database!;
   }
 
-  Future<Database> _initDB() async {
+  Future<Database> initDB() async {
     String path = join(await getDatabasesPath(), 'users.db');
-    return openDatabase(
+    return await openDatabase(
       path,
       version: 1,
-      onCreate: (db, version) {
-        return db.execute(
-          "CREATE TABLE users(id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT, email TEXT, password TEXT)",
-        );
+      onCreate: (db, version) async {
+        await db.execute(
+            "CREATE TABLE users (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT, email TEXT, password TEXT, isFavorite INTEGER)");
       },
     );
   }
@@ -32,12 +31,17 @@ class DBHelper {
 
   Future<List<UserModel>> getUsers() async {
     final db = await database;
-    final List<Map<String, dynamic>> users = await db.query('users');
-    return users.map((user) => UserModel.fromMap(user)).toList();
+    List<Map<String, dynamic>> users = await db.query('users');
+    return users.map((e) => UserModel.fromMap(e)).toList();
   }
 
-  Future<int> deleteUser(int id) async {
+  Future<void> updateUser(UserModel user) async {
     final db = await database;
-    return await db.delete('users', where: 'id = ?', whereArgs: [id]);
+    await db.update('users', user.toMap(), where: 'id = ?', whereArgs: [user.id]);
+  }
+
+  Future<void> deleteUser(int id) async {
+    final db = await database;
+    await db.delete('users', where: 'id = ?', whereArgs: [id]);
   }
 }

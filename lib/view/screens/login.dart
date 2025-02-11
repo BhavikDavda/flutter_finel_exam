@@ -1,39 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../conroller/auth.dart';
-import '../../models/usermodel.dart';
+import 'home_page.dart';
+import 'loginpage.dart';
 
-import 'login.dart';
 
-class SignUpPage extends StatelessWidget {
-  final UserController userController = Get.find();
-  final TextEditingController usernameController = TextEditingController();
+class LoginPage extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Sign Up")),
+      appBar: AppBar(title: Text("Login")),
       body: Padding(
         padding: EdgeInsets.all(16.0),
         child: Column(
           children: [
-            TextField(controller: usernameController, decoration: InputDecoration(labelText: "Username")),
             TextField(controller: emailController, decoration: InputDecoration(labelText: "Email")),
             TextField(controller: passwordController, decoration: InputDecoration(labelText: "Password"), obscureText: true),
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                final newUser = UserModel(
-                  username: usernameController.text,
-                  email: emailController.text,
-                  password: passwordController.text,
-                );
-                userController.addUser(newUser);
-                Get.offAll(() => LoginPage());
+                // Perform login logic
+                Get.off(() => HomePage());
               },
-              child: Text("Sign Up"),
+              child: Text("Login"),
+            ),
+            TextButton(
+              onPressed: () => Get.to(() => SignUpPage()),
+              child: Text("Don't have an account? Sign Up"),
             )
           ],
         ),

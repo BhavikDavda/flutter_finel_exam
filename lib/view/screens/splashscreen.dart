@@ -5,13 +5,16 @@ import 'home_page.dart';
 class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Future.delayed(Duration(seconds: 3), () {
-      Get.off(HomePage());
+    Future.delayed(Duration(seconds: 2), () {
+      Get.off(() => HomePage());
     });
 
     return Scaffold(
       body: Center(
-        child: Text("User Management App", style: TextStyle(fontSize: 24)),
+        child: Text(
+          "Welcome to User Management App",
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        ),
       ),
     );
   }

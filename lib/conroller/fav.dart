@@ -1,29 +1,32 @@
 import 'package:get/get.dart';
+
 import '../models/usermodel.dart';
 
 import '../view/screens/firestore.dart';
 
 class FavoriteController extends GetxController {
-  final FirestoreService firestoreService = FirestoreService();
   var favoriteUsers = <UserModel>[].obs;
+  final FirebaseService firebaseService = FirebaseService();
 
   @override
   void onInit() {
+    fetchFavorites();
     super.onInit();
-    loadFavoriteUsers();
   }
 
-  void loadFavoriteUsers() async {
-    favoriteUsers.value = await firestoreService.getFavoriteUsers();
+  void fetchFavorites() {
+    firebaseService.getFavorites().listen((users) {
+      favoriteUsers.value = users;
+    });
   }
 
-  void addFavoriteUser(UserModel user) async {
-    await firestoreService.addFavoriteUser(user);
-    loadFavoriteUsers();
+  void addToFavorites(UserModel user) {
+    firebaseService.addFavorite(user);
+    fetchFavorites(); // Refresh List
   }
 
-  void removeFavoriteUser(int id) async {
-    await firestoreService.removeFavoriteUser(id);
-    loadFavoriteUsers();
+  void removeFromFavorites(int id) {
+    firebaseService.removeFavorite(id);
+    fetchFavorites(); // Refresh List
   }
 }
