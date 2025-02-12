@@ -1,16 +1,5 @@
-# flutter_finel_exam
-
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![splashscreen](https://github.com/user-attachments/assets/26730b4d-ac28-4a12-aa18-5702f63aa1d3)
+![signup](https://github.com/user-attachments/assets/fbfd78e7-bdc8-4111-a08e-a9b792f0ce47)
+![login](https://github.com/user-attachments/assets/fe00605b-bd75-4c4b-9af8-b5eec6748e9d)
+![homepage](https://github.com/user-attachments/assets/d4a5aff2-9e22-4007-aa81-a79473095a03)
+![favourit](https://github.com/user-attachments/assets/cc3e3397-54f5-43b7-8948-bf30923b77d3)
